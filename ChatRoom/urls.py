@@ -1,12 +1,19 @@
-from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from chat.views import index
+from django.urls import path
 
+from account import views as account_views
+from chat import views as chat_views
+from account import urls as account_urls
 
-urlpatterns = patterns(
-	'',
-	url(r'^admin/', include(admin.site.urls)),
-	url(r'^account/', include('account.urls')),
-	url(r'^chat/', include('chat.urls')),
-	url(r'^$', index),
-)
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('account/login/', account_views.login),
+    path('account/logout/', account_views.logout),
+    path('chat/', chat_views.index),
+    path('chat/<int:roomid>/', chat_views.room),
+    path('chat/getmsg/', chat_views.getmsg),
+    path('chat/putmsg/', chat_views.putmsg),
+    path('chat/exitchat/', chat_views.exituser),
+    path('chat/onlinelist/', chat_views.onlineuser),
+    path('', chat_views.index),
+]

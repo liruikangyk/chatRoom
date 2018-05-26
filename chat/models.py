@@ -11,15 +11,15 @@ class ChatRoom(models.Model):
 
 
 class RoomAccount(models.Model):
-	username = models.ForeignKey(User)
-	roomname = models.ForeignKey(ChatRoom)
+	username = models.ForeignKey(User,on_delete=False)
+	roomname = models.ForeignKey(ChatRoom,on_delete=False)
 
 	def __unicode__(self):
 		return unicode(self.username)
 
 
 class ChatPool(models.Model):
-	roomname = models.ForeignKey(ChatRoom)
+	roomname = models.ForeignKey(ChatRoom,on_delete=False)
 	msg = models.CharField(max_length=1024)
 
 	def __unicode__(self):

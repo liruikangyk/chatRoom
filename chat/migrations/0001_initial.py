@@ -26,8 +26,8 @@ class Migration(migrations.Migration):
             name='RoomAccount',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('roomname', models.ForeignKey(to='chat.ChatRoom')),
-                ('username', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('roomname', models.ForeignKey(to='chat.ChatRoom',on_delete=False)),
+                ('username', models.ForeignKey(to=settings.AUTH_USER_MODEL,on_delete=False)),
             ],
             options={
             },
